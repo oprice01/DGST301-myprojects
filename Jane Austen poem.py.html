@@ -12,11 +12,14 @@ get_ipython().system('pip install textblob')
 
 with open('JaneAusten.txt', 'r') as file:
     text = file.read()
+# allows my text file (sense and sensibilities) to be read by Python
     import random
     from textblob import TextBlob
 blob = TextBlob(text)
+# files my text under the command 'blob
 adjectives = []
 nouns = []
+# lists for the two parts of speech I want extracted
 for word,pos in blob.tags:
     print(word,pos)
     if (pos == 'JJ'):
@@ -27,7 +30,7 @@ for word,pos in blob.tags:
 
 # In[7]:
 
-
+# to make an 8-lined poem made of randomly chosen adjectives and nouns
 for i in range(8):
     a1 = random.choice(adjectives)
     a2 = random.choice(adjectives)
@@ -35,4 +38,5 @@ for i in range(8):
     n2 = random.choice(nouns)
     n3 = random.choice(nouns)
     print(n1 + " " + a1 + " " +  n2  + " " + a2  + " " + n3)
+
 
