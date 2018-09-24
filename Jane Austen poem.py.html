@@ -1,0 +1,38 @@
+
+# coding: utf-8
+
+# In[5]:
+
+
+get_ipython().system('pip install textblob')
+
+
+# In[8]:
+
+
+with open('JaneAusten.txt', 'r') as file:
+    text = file.read()
+    import random
+    from textblob import TextBlob
+blob = TextBlob(text)
+adjectives = []
+nouns = []
+for word,pos in blob.tags:
+    print(word,pos)
+    if (pos == 'JJ'):
+        adjectives.append(word)
+    if (pos == 'NN'):
+        nouns.append(word)
+
+
+# In[7]:
+
+
+for i in range(8):
+    a1 = random.choice(adjectives)
+    a2 = random.choice(adjectives)
+    n1 = random.choice(nouns)
+    n2 = random.choice(nouns)
+    n3 = random.choice(nouns)
+    print(n1 + " " + a1 + " " +  n2  + " " + a2  + " " + n3)
+
