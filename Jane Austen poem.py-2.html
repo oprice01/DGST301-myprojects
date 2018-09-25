@@ -12,11 +12,13 @@ get_ipython().system('pip install textblob')
 
 with open('JaneAusten.txt', 'r') as file:
     text = file.read()
+# allows my text file to be read
     import random
     from textblob import TextBlob
 blob = TextBlob(text)
 adjectives = []
 nouns = []
+# added verbs to output
 verbs = []
 for word,pos in blob.tags:
     print(word,pos)
@@ -30,7 +32,7 @@ for word,pos in blob.tags:
 
 # In[3]:
 
-
+# makes 8 line poem with randomly chosen nouns, adjectives, and verbs
 for i in range(8):
     a1 = random.choice(adjectives)
     a2 = random.choice(adjectives)
