@@ -19,6 +19,8 @@ blob = TextBlob(text)
 # files my text under the command 'blob
 adjectives = []
 nouns = []
+# added verbs to output
+verbs = []
 # lists for the two parts of speech I want extracted
 for word,pos in blob.tags:
     print(word,pos)
@@ -26,6 +28,8 @@ for word,pos in blob.tags:
         adjectives.append(word)
     if (pos == 'NN'):
         nouns.append(word)
+    if (pos == 'VBD'):
+        verbs.append(word)
 
 
 # In[7]:
@@ -35,8 +39,8 @@ for i in range(8):
     a1 = random.choice(adjectives)
     a2 = random.choice(adjectives)
     n1 = random.choice(nouns)
+    v1 = random.choice(nouns)
     n2 = random.choice(nouns)
-    n3 = random.choice(nouns)
-    print(n1 + " " + a1 + " " +  n2  + " " + a2  + " " + n3)
+    print(n1 + " " + a1 + " " +  v1  + " " + a2  + " " + n2)
 
 
