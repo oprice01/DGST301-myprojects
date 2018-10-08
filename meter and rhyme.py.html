@@ -16,6 +16,7 @@ def get_words(pos):
         all_words = [w["present"] for w in pycorpora.words.verbs["verbs"]]
         
     keepers = []
+#created fuctions to draw words from pycorpora adjective and verb lists
     for n in all_words:
         pl = pronouncing.phones_for_word(n)
         if (len(pl) > 0):
@@ -24,6 +25,7 @@ def get_words(pos):
             keepers.append(n)
         
     return keepers
+#making sure the meter stayed consistent
 def get_pairs():
     adjs = get_words("adjs")
     verbs = get_words("verbs")
@@ -33,6 +35,7 @@ def get_pairs():
             if (a in pronouncing.rhymes(v)):
                 pairs.append( (a,v))
     return pairs
+#creating adj/verb pairs that rhyme from the list, my list came up with a lot of pairs!!!!
 
 get_pairs()
 
