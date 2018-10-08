@@ -1,0 +1,57 @@
+
+# coding: utf-8
+
+# In[ ]:
+
+
+import pycorpora
+import random
+import pronouncing
+def get_words(pos):
+    
+    if (pos is "adjs"):
+        all_words = pycorpora.words.adjs["adjs"]
+  
+    elif (pos is "verbs"):
+        all_words = [w["present"] for w in pycorpora.words.verbs["verbs"]]
+        
+    keepers = []
+    for n in all_words:
+        pl = pronouncing.phones_for_word(n)
+        if (len(pl) > 0):
+            syllablecount = pronouncing.syllable_count(pl[0])
+        if (syllablecount == 1):
+            keepers.append(n)
+        
+    return keepers
+def get_pairs():
+    adjs = get_words("adjs")
+    verbs = get_words("verbs")
+    
+    for a in adjs:
+        for v in verbs:
+            if (a in pronouncing.rhymes(v)):
+                pairs.append( (a,v))
+    return pairs
+
+get_pairs()
+
+template = """
+It is full winter now: the trees are {0},
+Save where the cattle huddle from the cold
+Beneath the pine, for it doth never {1}
+The autumn's gaudy livery whose gold
+Her jealous brother pilfers, but is true
+To the green doublet; bitter is the wind, as though it blew
+"""
+pair = random.choice(get_pairs())
+
+poem = template.format(
+    pair[0],
+    pair[1],
+)
+
+print (poem)
+
+    
+
