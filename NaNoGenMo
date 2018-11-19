@@ -1,0 +1,25 @@
+import random
+import markovify
+import dominate
+from dominate.tags import *
+
+novel = ''
+
+#combined Grimm's fairy tales and John Locke's Treatise of Gov't
+with open("grimmlocke.txt") as f:
+    text = f.read()
+    
+  #creates markov database for all the words in the text
+text_model = markovify.Text(text)
+for i in range(2000):
+    novel += str(text_model.make_sentence()) + " "
+    novel += "\n\n"
+    r = random.randint(0,100)
+    
+    #indentation
+if (r < 10):
+    novel += "\n\n"
+#print(novel)
+
+#length of novel is 59,369
+len(novel.split(" "))
