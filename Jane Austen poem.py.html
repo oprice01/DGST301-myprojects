@@ -1,27 +1,18 @@
 
-# coding: utf-8
-
-# In[5]:
-
-
-get_ipython().system('pip install textblob')
-
-
-# In[8]:
-
-
 with open('JaneAusten.txt', 'r') as file:
     text = file.read()
-# allows my text file (sense and sensibilities) to be read by Python
     import random
     from textblob import TextBlob
 blob = TextBlob(text)
-# files my text under the command 'blob
+
+#defining all of the parts of speech for my poem, using textblob to assign each word in the text a pos tag
 adjectives = []
 nouns = []
-# added verbs to output
 verbs = []
-# lists for the two parts of speech I want extracted
+pronouns = []
+adverbs = []
+prepositions = []
+modals = []
 for word,pos in blob.tags:
     print(word,pos)
     if (pos == 'JJ'):
@@ -30,17 +21,46 @@ for word,pos in blob.tags:
         nouns.append(word)
     if (pos == 'VBD'):
         verbs.append(word)
+    if (pos == 'PRP'):
+        pronouns.append(word)
+    if (pos == 'RB'):
+        adverbs.append(word)
+    if (pos == 'IN'):
+        prepositions.append(word)
+    if (pos == 'MD'):
+        modals.append(word)
 
-
-# In[7]:
-
-# to make an 8-lined poem made of randomly chosen adjectives and nouns
+#changed my poem structure to include pronouns, adverbs, and prepositions
 for i in range(8):
+    p1 = random.choice(pronouns)
     a1 = random.choice(adjectives)
-    a2 = random.choice(adjectives)
     n1 = random.choice(nouns)
-    v1 = random.choice(nouns)
     n2 = random.choice(nouns)
-    print(n1 + " " + a1 + " " +  v1  + " " + a2  + " " + n2)
+    v1 = random.choice(verbs)
+    ad1 = random.choice(adverbs)
+    pr1 = random.choice(prepositions)
+    print(p1 + " " + ad1 + " " + v1 + " " +  n1  + " " + pr1 + " " + a1  + " " + n2)
 
-
+#used \n for a line break and added another line, included a modal pos
+for i in range(6):
+    p1 = random.choice(pronouns)
+    a1 = random.choice(adjectives)
+    n1 = random.choice(nouns)
+    n2 = random.choice(nouns)
+    v1 = random.choice(verbs)
+    v2 = random.choice(verbs)
+    ad1 = random.choice(adverbs)
+    pr1 = random.choice(prepositions)
+    m1 = random.choice(modals)
+    print(p1 + " " + ad1 + " " + v1 + " " +  n1  + " " + pr1 + " " + a1  + " " + n2)
+for i in range (1):
+    p1 = random.choice(pronouns)
+    a1 = random.choice(adjectives)
+    n1 = random.choice(nouns)
+    n2 = random.choice(nouns)
+    v1 = random.choice(verbs)
+    v2 = random.choice(verbs)
+    ad1 = random.choice(adverbs)
+    pr1 = random.choice(prepositions)
+    m1 = random.choice(modals)
+    print('\n' + a1 + " " + n1 + " " + ad1 + " " + v2)
