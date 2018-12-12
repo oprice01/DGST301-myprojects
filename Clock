@@ -1,0 +1,42 @@
+function setup() {
+  createCanvas(400, 400);
+  
+
+}
+
+function draw() {
+  background(220);
+ 
+  let current_minute = minute()
+  
+
+  //mapping the sun to move across the "sky" with each minute
+  let sun = map(minute(), 0, 60, 0, width - 50);
+  noStroke()
+  colorMode(RGB, 255)
+  fill(200, 200, 0, 60)
+  ellipse(sun, 50, 50, 50)
+  
+  fill(10)
+  let current_second = second();
+  let current_hour = hour();
+  text(current_second, 30, 30);
+  text(current_minute, 20, 20);
+  text(current_hour, 10, 10)
+  
+  //mapping seconds and HSB color to fill the flower
+  let xh = map(second(), 0, 60, 0, 100)
+  colorMode(HSB, 100);
+  fill(xh, 80, 80, 60);
+  
+ //making the flower rotate
+  translate(200, 200);
+  noStroke();
+  for (var i = 0; i < 10; i ++) {
+    ellipse(0, 30, 20, 80);
+    rotate(second()/5);
+  
+
+  }
+ 
+}
